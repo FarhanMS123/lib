@@ -4,8 +4,9 @@ global.net = require("net");
 function listen(){
 	s.listen({}); //using listen
 }
-
-global.proc = cp.spawn("node", ["your file.js"]); //spawning
+function createProccess(){
+	global.proc = cp.spawn("node", ["your file.js"]); //spawning
+}
 
 global.s = net.createServer(); //listen here
 s.on("error", function(e){
@@ -27,6 +28,7 @@ log(proc, function(name, desc){
 	s.members.forEach(function(c){
 		if(c._handle !== null) c.write(json.stringify([name, desc]));
 	});
+	if(proc.killed) createProccess();
 });
 
 function log(p, f){
