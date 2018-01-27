@@ -4,7 +4,6 @@ ifLine([sm, vt], [sm, vt], [sm, vt], ... , [sm, vt], value_false); //will return
 -----------------------------------------------------------------------------------------------------------------------------
 ifLine([false, 3], [false, 4], [true, 5], [false, 6], [true, 7]); //return 5
 ifLine([false, 3], [false, 4], [false, 5], [false, 6], [false, 7]); //return false
-ifLine([false, 3], [false, 4], [false, 5], [false, 6], "another chance"); //return "another chance"
 */
 
 function ifLine(){
