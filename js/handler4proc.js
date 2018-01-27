@@ -4,29 +4,32 @@ global.net = require("net");
 function listen(){
 	s.listen({}); //using listen
 }
-function createProccess(){
-	global.proc = cp.spawn("node", ["your file.js"]); //spawning
+function createProcess(){
+	global.proc = cp.spawn("node", ["file.js"]); //spawning
 }
 
 global.s = net.createServer(); //listen here
 s.on("error", function(e){
-	console.log(json.stringify(["server_error", e]));
+	console.log(JSON.stringify(["server_error", e]));
 	if(s._handle == null) listen();
 }).on("close", function(){
 	s.members = [];
-	console.log(json.stringify(["server_close", e]));
+	console.log(JSON.stringify(["server_close", e]));
 	listen();
 }).on("connection", function(c){
 	s.members.push(c);
 }).on("listening", function(){
 	s.members = [];
-	console.log(json.stringify(["server_listen", ""]));
+	console.log(JSON.stringify(["server_listen", ""]));
 });
 
+listen();
+createProcess()
+
 log(proc, function(name, desc){
-	console.log(json.stringify([name, desc]));
+	console.log(JSON.stringify([name, desc]));
 	s.members.forEach(function(c){
-		if(c._handle !== null) c.write(json.stringify([name, desc]));
+		if(c._handle !== null) c.write(JSON.stringify([name, desc]));
 	});
 	if(proc.killed) createProccess();
 });
