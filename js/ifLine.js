@@ -1,6 +1,5 @@
 /*
 ifLine([statement, value_true], [statement, value_true], [sm, vt], ... , [sm, vt]); //will return one of value_true or false
-ifLine([sm, vt], [sm, vt], [sm, vt], ... , [sm, vt], value_false); //will return one of value_true or value_false
 -----------------------------------------------------------------------------------------------------------------------------
 ifLine([false, 3], [false, 4], [true, 5], [false, 6], [true, 7]); //return 5
 ifLine([false, 3], [false, 4], [false, 5], [false, 6], [false, 7]); //return false
