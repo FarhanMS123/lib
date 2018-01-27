@@ -1,12 +1,3 @@
-function kickMid(arr, index){
-	var dt = []; var i;
-	for(i=0;i<arr.length;i++){
-		if(i==index) continue;
-		dt.push(arr[i])
-	}
-	return dt;
-}
-
 function splitArgs(arg){
 	var full = arg.split(" ");
 	var u=-1, x=[], l="", i=undefined;
@@ -27,7 +18,12 @@ function splitArgs(arg){
 	}
 	var i = undefined;
 	for(i=x.length - 1;i>-1;i--){
-		full = kickMid(full, x[i]);
+		var dt = []; var u;
+		for(u=0;u<full.length;u++){
+			if(u==x[i]) continue;
+			dt.push(full[u])
+		}
+		full = dt;
 	}
 	return full;
 }
